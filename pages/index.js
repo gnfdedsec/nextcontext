@@ -14,7 +14,7 @@ export async function getStaticProps() {
 
 export default function Index({ products }) {
   const { value } = useContext(MyContext);
-  const [searchValue, setSearchValue] = useState('');
+  const [setSearchValue] = useState('');
 
   // Filter the list with matching `value` from useContext and case-insensitive search
   const filteredProducts = products.filter((item) =>
