@@ -14,7 +14,7 @@ export async function getStaticProps() {
 
 export default function Index({ products }) {
   const { value } = useContext(MyContext);
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue] = useState('');
 
   // Filter the list with matching `value` from useContext and case-insensitive search
   const filteredProducts = products.filter((item) =>
@@ -22,20 +22,13 @@ export default function Index({ products }) {
     item.brand.toLowerCase().includes(value.toLowerCase())
   );
 
-  const handleSearchChange = (e) => {
-    setSearchValue(e.target.value.toLowerCase());
-  };
+
 
   return (
     <>
       <h1>Value from Navbar: {value}</h1>
       <div>
-        <input
-          type="text"
-          value={searchValue}
-          onChange={handleSearchChange}
-          placeholder="Search"
-        />
+      
       </div>
       <div>
         {filteredProducts
