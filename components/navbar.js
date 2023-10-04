@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
-import MyContext from '@/src/context';
+/* import React from 'react';
+import useMyStore from '@/src/context';
 
 export default function Navbar() {
-  const { value, setValue } = useContext(MyContext);
+  const { value, setValue } = useMyStore();
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
@@ -13,6 +13,23 @@ export default function Navbar() {
   return (
     <nav>
       <input type="text" onKeyDown={handleKeyDown} />
+    </nav>
+  );
+}
+*/
+import React from 'react';
+import useMyStore from '@/src/context';
+
+export default function Navbar() {
+  const { value, setValue } = useMyStore();
+
+  const handleInputChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  return (
+    <nav>
+      <input type="text" onChange={handleInputChange} value={value} />
     </nav>
   );
 }

@@ -1,15 +1,10 @@
-import React, { createContext, useState } from 'react';
+import { create } from 'zustand';  // แก้ิี bug create ขีดฆ่าใช้ แทน create
 
-const MyContext = createContext();
+// Create a Zustand store
+const useMyStore = create((set) => ({
+  value: '',
+  setValue: (newValue) => set({ value: newValue }),
+}));
 
-export const MyContextProvider = ({ children }) => {
-  const [value, setValue] = useState('');
+export default useMyStore;
 
-  return (
-    <MyContext.Provider value={{ value, setValue }}>
-      {children}
-    </MyContext.Provider>
-  );
-};
-
-export default MyContext;

@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react';
-import MyContext from '@/src/context';
+import React from 'react';
+import useMyStore from '@/src/context';
 
 export async function getStaticProps() {
   const res = await fetch('https://dummyjson.com/products?limit=12');
@@ -13,8 +13,8 @@ export async function getStaticProps() {
 }
 
 export default function Index({ products }) {
-  const { value } = useContext(MyContext);
-  const [setSearchValue] = useState('');
+  const { value, setValue } = useMyStore();
+
 
   // Filter the list with matching `value` from useContext and case-insensitive search
   const filteredProducts = products.filter((item) =>
@@ -43,3 +43,4 @@ export default function Index({ products }) {
     </>
   );
 }
+
